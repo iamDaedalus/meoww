@@ -35,7 +35,7 @@ async function modalFunction(data) {
     modalTrailerBtn.classList.remove("activeButton");
     modalEpisodeBtn.classList.remove("activeButton");
     modalOverview.innerHTML = `
-  <p>${data.overview}</p>
+  <p  class="modalOverviewText">${data.overview}</p>
    <div class="swiper-container" id="castContainer">
    <div class="swiper-wrapper" id="castWrapper"></div>
    </div>
@@ -56,51 +56,51 @@ async function modalFunction(data) {
     `;
   });
 
-if (data.mediaType === "tv") {
-  modalEpisodeBtn.style.display = "block";
-  modalEpisodeBtn.addEventListener("click", () => {
-    // Handle active button styling
-    modalOverviewBtn.classList.remove("activeButton");
-    modalTrailerBtn.classList.remove("activeButton");
-    modalEpisodeBtn.classList.add("activeButton");
+  if (data.mediaType === "tv") {
+    modalEpisodeBtn.style.display = "block";
+    modalEpisodeBtn.addEventListener("click", () => {
+      // Handle active button styling
+      modalOverviewBtn.classList.remove("activeButton");
+      modalTrailerBtn.classList.remove("activeButton");
+      modalEpisodeBtn.classList.add("activeButton");
 
-    // Clear modal overview content
-    modalOverview.innerHTML = "";
+      // Clear modal overview content
+      modalOverview.innerHTML = "";
 
-    // Create season dropdown
-    const seasonDropdown = document.createElement("select");
-    seasonDropdown.className = "seasonDropdown";
+      // Create season dropdown
+      const seasonDropdown = document.createElement("select");
+      seasonDropdown.className = "seasonDropdown";
 
-    let defaultSeasonNumber = data.season[0].season_number; // Default to the first season
+      let defaultSeasonNumber = data.season[0].season_number; // Default to the first season
 
-    // Populate season dropdown
-    data.season.forEach((season) => {
-      const option = document.createElement("option");
-      option.value = season.season_number;
-      option.textContent = season.name;
+      // Populate season dropdown
+      data.season.forEach((season) => {
+        const option = document.createElement("option");
+        option.value = season.season_number;
+        option.textContent = season.name;
 
-      // Check if "Season 1" exists and set it as default
-      if (season.name === "Season 1") {
-        option.selected = true;
-        defaultSeasonNumber = season.season_number;
-      }
+        // Check if "Season 1" exists and set it as default
+        if (season.name === "Season 1") {
+          option.selected = true;
+          defaultSeasonNumber = season.season_number;
+        }
 
-      seasonDropdown.appendChild(option);
-    });
+        seasonDropdown.appendChild(option);
+      });
 
-    // Create episode container
-    const episodeContainer = document.createElement("div");
-    episodeContainer.className = "episodeContainer";
+      // Create episode container
+      const episodeContainer = document.createElement("div");
+      episodeContainer.className = "episodeContainer";
 
-    // Function to fetch and display episodes
-    const loadEpisodes = async (seasonNumber) => {
-      episodeContainer.innerHTML = ""; // Clear episode container
-      try {
-        const episodeData = await fetchSeason(data.id, seasonNumber);
-        episodeData.forEach((episode) => {
-          const episodeSlide = document.createElement("div");
-          episodeSlide.className = "episodeSlide";
-          episodeSlide.innerHTML = `
+      // Function to fetch and display episodes
+      const loadEpisodes = async (seasonNumber) => {
+        episodeContainer.innerHTML = ""; // Clear episode container
+        try {
+          const episodeData = await fetchSeason(data.id, seasonNumber);
+          episodeData.forEach((episode) => {
+            const episodeSlide = document.createElement("div");
+            episodeSlide.className = "episodeSlide";
+            episodeSlide.innerHTML = `
             <div class="episodeImageContainer">
              <span class="modalPlay material-symbols-rounded"> play_arrow </span>
               <img class="lazy-load" data-src="${episode.episodeImage}" alt="${episode.episodeName}" />
@@ -110,35 +110,34 @@ if (data.mediaType === "tv") {
               <p>${episode.episodeOverview}</p>
             </div>
           `;
-          episodeContainer.appendChild(episodeSlide);
+            episodeContainer.appendChild(episodeSlide);
 
-          episodeSlide.addEventListener("click", () => {
-            iframePlayer.classList.add("iframePlayerActive");
-            sourcePlayer(data.id, "tv", seasonNumber, episode.episodeNumber);
+            episodeSlide.addEventListener("click", () => {
+              iframePlayer.classList.add("iframePlayerActive");
+              sourcePlayer(data.id, "tv", seasonNumber, episode.episodeNumber);
+            });
           });
-        });
 
-        // Reinitialize lazy loading if needed
-        tamad();
-      } catch (error) {
-        console.error("Error fetching episodes:", error);
-      }
-    };
+          // Reinitialize lazy loading if needed
+          tamad();
+        } catch (error) {
+          console.error("Error fetching episodes:", error);
+        }
+      };
 
-    // Load episodes for the default season
-    loadEpisodes(defaultSeasonNumber);
+      // Load episodes for the default season
+      loadEpisodes(defaultSeasonNumber);
 
-    // Add event listener for dropdown change
-    seasonDropdown.addEventListener("change", (event) => {
-      loadEpisodes(event.target.value);
+      // Add event listener for dropdown change
+      seasonDropdown.addEventListener("change", (event) => {
+        loadEpisodes(event.target.value);
+      });
+
+      // Append elements to modal overview
+      modalOverview.appendChild(seasonDropdown);
+      modalOverview.appendChild(episodeContainer);
     });
-
-    // Append elements to modal overview
-    modalOverview.appendChild(seasonDropdown);
-    modalOverview.appendChild(episodeContainer);
-  });
-}
-
+  }
 
   swiperModal();
   tamad();
