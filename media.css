@@ -1,0 +1,163 @@
+@media only screen and (max-width: 968px) {
+  header {
+    position: fixed;
+    top: 3px;
+    width: calc(100% - 6px);
+    border-radius: 5px;
+    padding: 5px;
+    padding-bottom: 10px;
+    flex-direction: column;
+  }
+  .movie-tooltip {
+    display: none;
+  }
+  .infoContainer {
+    left: unset;
+    bottom: 19%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .infoContainer p,
+  .infoContainer i {
+    font-size: 1rem;
+  }
+
+  .backdropSwiper::before {
+    background: linear-gradient(0deg, #000000 15%, #0d0d0d36);
+  }
+  .posterContainer {
+    display: flex;
+  }
+
+  .logoImage,
+  .landingTitle,
+  .landingOverview {
+    display: none;
+  }
+  .landingTagline {
+    text-align: center;
+    padding: 10px;
+  }
+  .backdropSwiper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .landingTrailer {
+    left: unset;
+    height: 100%;
+  }
+  .visibilityButton {
+    display: flex;
+  }
+  .networkSection {
+    height: 60dvh;
+  }
+
+  .backdropImg {
+    border-radius: 5px;
+  }
+  .swiperContainer {
+    width: 98%;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  .companyTitle {
+    font-size: 2rem;
+  }
+
+  label {
+    aspect-ratio: 16 / 4;
+    -webkit-text-stroke: 0.5px rgba(245, 245, 245, 0.727);
+  }
+  .meow-movie {
+    padding: 110px 10px 10px 10px;
+    gap: 10px;
+    transition: 0.3s ease-out;
+  }
+  .meow-movie.space {
+    padding: 120px 10px 10px 10px;
+  }
+  .blank {
+    height: 90dvh;
+  }
+  nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 10dvh;
+    border-radius: 0;
+    background: #0d0d0d;
+    border: 0;
+  }
+  .van {
+    flex-direction: column;
+    font-size: 0.9rem;
+  }
+  .vanmob {
+    display: flex;
+  }
+  .searchBarContainer {
+    width: 95%;
+    height: 0;
+    pointer-events: none;
+    opacity: 0;
+    filter: blur(10px);
+    transition: 0.3s ease-out;
+    transform: translateY(-100%);
+  }
+  .searchBarContainer.show {
+    pointer-events: all;
+    height: 35px;
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0%);
+  }
+  .searchIcon {
+    right: unset;
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.744);
+    font-weight: 400;
+    background: transparent;
+    width: 50px;
+    box-shadow: unset;
+  }
+  .searchBar {
+    width: 100%;
+    border-bottom: 2px solid rgba(245, 245, 245, 0.655);
+    border-radius: 0;
+    color: #e8e8e8;
+    background: transparent;
+  }
+  .searchBar.active {
+    width: 100%;
+  }
+
+  .arrowUp span {
+    color: var(--accent-color);
+    font-size: 2rem;
+    margin-top: -25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .arrowUp span:nth-child(2)::after {
+    font-size: 0.6rem;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    top: 37%;
+  }
+  label {
+    aspect-ratio: 16 / 5;
+    border-radius: 5px;
+  }
+  .van:hover {
+    background: unset;
+    box-shadow: unset;
+    color: white;
+  }
+}

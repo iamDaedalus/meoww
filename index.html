@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=bespoke-stencil@400,500,700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@40,300,0,0"
+    />
+    <link rel="stylesheet" href="icu2.css" />
+    <link rel="stylesheet" href="modal.css" />
+    <link rel="stylesheet" href="landing.css" />
+
+    <style>
+      * {
+        /* border: 1px solid red; */
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        user-select: none;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      body {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+      }
+      header {
+        position: fixed;
+        top: 10px;
+        width: calc(100% - 20px);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 9;
+        background: rgba(0, 0, 0, 0.497);
+        padding: 10px;
+        border-radius: 10px;
+      }
+      nav {
+        width: 30%;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        border-radius: 50px;
+        gap: 5px;
+        background: #e8e8e82c;
+        border: 1px solid #e8e8e881;
+      }
+      .vanmob {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        color: #e8e8e8;
+        width: 100%;
+      }
+      .van {
+        width: 100%;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        gap: 5px;
+        cursor: pointer;
+        color: white;
+        transition: 0.1s ease-out;
+      }
+      .van:hover {
+        background: #e8e8e8;
+        color: #0d0d0d;
+        box-shadow: 0 0 1px 1px #0f0f0f5e;
+      }
+      .brandLogoContainer {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      .brandImage {
+        position: absolute;
+        height: 95%;
+        width: 100%;
+        object-fit: contain;
+        z-index: 1;
+      }
+      .brandTitle {
+        opacity: 0.5;
+        color: white;
+        letter-spacing: 2px;
+      }
+      #contents {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        overflow: hidden;
+      }
+      .blank {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        height: 100dvh;
+        pointer-events: none;
+      }
+      .content1 {
+        /* border-radius: 30px 30px 0 0; */
+      }
+      .content1 {
+        min-height: 100dvh;
+        width: 100%;
+        background: linear-gradient(90deg, red, #0d0d0d 99%);
+        z-index: 1;
+        box-shadow: 0 0 2px 1px #00000082;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="searchResultContainer">
+      <span style="display: flex"
+        >Showing results on&nbsp;"
+        <p style="color: white" id="typeText"></p>
+        "</span
+      >
+
+      <div id="results"></div>
+    </div>
+    <header>
+      <div class="brandLogoContainer">
+        <img class="brandImage" src="https://i.ibb.co/n0c3gXW/1.png" />
+        <h1 class="brandTitle" style="font-family: Bespoke Stencil">
+          [STREAM]
+        </h1>
+      </div>
+      <nav>
+        <a href="#home" class="van">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-home"
+          >
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          <p>Home</p>
+        </a>
+        <a href="#movie" class="van">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-clapperboard"
+          >
+            <path
+              d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"
+            ></path>
+            <path d="m6.2 5.3 3.1 3.9"></path>
+            <path d="m12.4 3.4 3.1 4"></path>
+            <path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"></path>
+          </svg>
+          <p>Movie</p>
+        </a>
+        <a href="#tv" class="van">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-tv"
+          >
+            <rect width="20" height="15" x="2" y="7" rx="2" ry="2"></rect>
+            <polyline points="17 2 12 7 7 2"></polyline>
+          </svg>
+          <p>TV</p>
+        </a>
+        <div class="vanmob">
+          <svg
+            stroke="currentColor"
+            fill="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            class="style_inactive__EPRfk"
+            width="20"
+            height="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11 2C15.968 2 20 6.032 20 11C20 15.968 15.968 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2ZM11 18C14.8675 18 18 14.8675 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18ZM19.4853 18.0711L22.3137 20.8995L20.8995 22.3137L18.0711 19.4853L19.4853 18.0711Z"
+            ></path>
+          </svg>
+          <p>Search</p>
+        </div>
+      </nav>
+      <div class="searchBarContainer">
+        <span class="material-symbols-rounded searchIcon"> search </span>
+        <input class="searchBar" type="search" placeholder="Search..." />
+      </div>
+    </header>
+
+    <div class="iframePlayer">
+      <span id="closePlayer" class="material-symbols-rounded"> close </span>
+      <select id="iframeSelect"></select>
+      <iframe id="iframeIframe" src="" frameborder="0"></iframe>
+    </div>
+
+    <div id="modal" class="modal">
+      <span id="closeModal" class="material-symbols-rounded arrow_back">
+        close</span
+      >
+
+      <div class="modalWrapper">
+        <div class="modalPoster">
+          <span class="modalPlay material-symbols-rounded"> play_arrow </span>
+          <img id="modalPoster" src="" alt="" />
+        </div>
+        <div class="modalContent">
+          <div class="modalContentUpper">
+            <h1 id="modalTitle">Title</h1>
+            <div class="modalTrio">
+              <p id="modalYear">Year</p>
+              |
+              <p id="modalRuntime">Runtime</p>
+              |
+              <p id="modalGenre">Genre</p>
+            </div>
+          </div>
+          <div class="modalContentLower">
+            <div class="modalButtons">
+              <button id="modalOverviewBtn">Overview</button>
+              <button style="display: none" id="modalEpisodeBtn">
+                Episodes
+              </button>
+              <button id="modalTrailerBtn">Trailer</button>
+              <button class="moreButton">More+</button>
+            </div>
+            <div id="modalOverview"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="contents"></div>
+    <link rel="stylesheet" href="media.css" />
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script> -->
+
+  <script src="/nahh.js"></script>
+  <script src="/fetchshow.js"></script>
+  <script src="/fetchImages.js"></script>
+  <script src="fetchTrailer.js"></script>
+  <script src="tamad.js"></script>
+  <script src="search.js"></script>
+  <script src="route.js"></script>
+  <script src="companis2.js"></script>
+  <script src="progressBar.js"></script>
+  <script src="modal.js"></script>
+  <script src="source.js"></script>
+  <script src="movies.js"></script>
+  <script src="fetchActor.js"></script>
+  <script src="getSeason.js"></script>
+  <script src="tvseries.js"></script>
+  <script src="ad.js"></script>
+  <script>
+    const showlist = [
+      { id: "1276210", media_type: "movie" },
+      { id: "1032823", media_type: "movie" },
+      { id: "170", media_type: "movie" },
+
+      { id: "945961", media_type: "movie" },
+
+      { id: "744857", media_type: "movie" },
+      { id: "913290", media_type: "movie" },
+      { id: "1184918", media_type: "movie" },
+      { id: "94605", media_type: "tv" },
+      { id: "1100782", media_type: "movie" },
+    ];
+    const apiKey = "47a1a7df542d3d483227f758a7317dff";
+
+    async function landingShows(showlist) {
+      for (const meow of showlist) {
+        const arf = await fetchShows(meow.id, meow.media_type);
+        displayLanding(arf);
+      }
+      tamad();
+      initSwipers();
+    }
+
+    async function displayLanding(meow) {
+      const backdropWrapper = document.getElementById("backdropWrapper");
+      const posterContainer = document.querySelector(".posterContainer");
+      const posterWrapper = document.getElementById("posterWrapper");
+      const backdropSlider = document.createElement("div");
+      backdropSlider.className = "swiper-slide backdropSwiper";
+      backdropSlider.innerHTML = `
+      <div class="infoContainer">
+        
+      
+        <img data-src="${meow.logo}" class="logoImage lazy-load" alt="${meow.title}"/> 
+       
+        <i class="landingTagline">${meow.tagline}</i>
+       <h1 class="landingTitle">${meow.title}</h1>
+       <p class="landingOverview">${meow.overview}</p>
+
+      <p>${meow.year}&nbsp;&nbsp;&nbsp;  <span>|</span> &nbsp;&nbsp;&nbsp;${meow.run} &nbsp;&nbsp;&nbsp; <span>|</span> &nbsp;&nbsp;&nbsp; ${meow.genre}</p>
+
+      <div class="controlContainer">
+        <div class="unmuteButton"><span class="material-symbols-rounded">
+      volume_off
+      </span></div>
+        <div class="visibilityButton"><span class="material-symbols-rounded">
+      visibility
+      </span></div>
+        <div class="iframeHide">
+          <span class="material-symbols-rounded">
+      videocam_off
+      </span></div>
+      <div class="playLanding">
+       <span class="material-symbols-rounded">
+play_arrow
+</span></div>
+      </div>
+      
+      </div>
+
+      <iframe class="landingTrailer" src=""
+       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>></iframe>
+      <img data-src="${meow.backdrop}" class="backdropImage lazy-load" alt="${meow.title}"/> 
+      `;
+
+      const posterSlider = document.createElement("div");
+      posterSlider.className = "swiper-slide posterSwiper";
+      posterSlider.innerHTML = `
+      <img data-src="${meow.poster}" class="posterImage lazy-load" alt="${meow.title}"/>
+      `;
+
+      posterWrapper.appendChild(posterSlider);
+      backdropWrapper.appendChild(backdropSlider);
+
+      let playTimeout;
+      const landingTrailer = backdropSlider.querySelector(".landingTrailer");
+      const unmuteButton = backdropSlider.querySelector(".unmuteButton");
+      const visibilityButton =
+        backdropSlider.querySelector(".visibilityButton");
+      const iframeHide = backdropSlider.querySelector(".iframeHide");
+      const playLanding = backdropSlider.querySelector(".playLanding");
+
+      unmuteButton.addEventListener("click", () => {
+        if (landingTrailer.src.includes("&mute=1")) {
+          landingTrailer.src = landingTrailer.src.replace("&mute=1", "");
+          unmuteButton.innerHTML = `<span class="material-symbols-rounded">
+volume_up
+</span>`;
+        } else {
+          if (!landingTrailer.src.includes("&mute=1")) {
+            landingTrailer.src += "&mute=1";
+          }
+          unmuteButton.innerHTML = `<span class="material-symbols-rounded">
+volume_off
+</span>`;
+        }
+      });
+
+      visibilityButton.addEventListener("click", () => {
+        posterContainer.classList.toggle("posterContainerHide");
+        const isHidden = posterContainer.classList.contains(
+          "posterContainerHide"
+        );
+        visibilityButton.innerHTML = `<span class="material-symbols-rounded">
+${isHidden ? "visibility_off" : "visibility"}
+</span>`;
+      });
+
+      landingTrailer.classList.add("hideTrailer");
+      iframeHide.addEventListener("click", () => {
+        landingTrailer.classList.toggle("hideTrailer");
+        const isHidden = posterContainer.classList.contains("hideTrailer");
+        iframeHide.innerHTML = `<span class="material-symbols-rounded">
+${isHidden ? "videocam_off" : "videocam"}
+</span>`;
+      });
+
+      playLanding.addEventListener("click", () => {
+        iframePlayer.classList.add("iframePlayerActive");
+        sourcePlayer(meow.id, meow.mediaType, "1", "1");
+        adLink();
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // If visible, add a delay before playing the trailer
+              playTimeout = setTimeout(() => {
+                landingTrailer.src = meow.trailer + "&autoplay=1";
+                unmuteButton.style.display = "block";
+                iframeHide.style.display = "block";
+                iframeHide.innerHTML = `<span class="material-symbols-rounded">
+videocam
+</span>`;
+              }, 0); // Delay of 5 seconds
+            } else {
+              // If not visible, clear the timeout and remove the src
+              clearTimeout(playTimeout); // Cancel the timeout if element exits before 5 seconds
+              landingTrailer.src = ""; // Remove src to stop playback
+              unmuteButton.style.display = "none";
+              unmuteButton.innerHTML = `<span class="material-symbols-rounded">
+volume_off
+</span>`;
+
+              iframeHide.innerHTML = `<span class="material-symbols-rounded">
+videocam_off
+</span>`;
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      observer.observe(landingTrailer);
+    }
+
+    function initSwipers() {
+      const backdropSwiper = new Swiper(".backdropContainer", {
+        slidesPerView: "auto",
+        loop: false,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+
+      // Initialize the poster swiper
+      const posterSwiper = new Swiper(".posterContainer", {
+        slidesPerView: "auto",
+        loop: false,
+        spaceBetween: 20,
+        centeredSlides: "true",
+        loopedSlides: 3,
+
+        controller: {
+          control: backdropSwiper,
+        },
+      });
+
+      backdropSwiper.controller.control = posterSwiper;
+    }
+  </script>
+</html>
