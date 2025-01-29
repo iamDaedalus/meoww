@@ -102,7 +102,7 @@ async function modalFunction(data) {
             episodeSlide.className = "episodeSlide";
             episodeSlide.innerHTML = `
             <div class="episodeImageContainer">
-             <span class="modalPlay material-symbols-rounded"> play_arrow </span>
+             <span class="modalPlayEpisode material-symbols-rounded"> play_arrow </span>
               <img class="lazy-load" data-src="${episode.episodeImage}" alt="${episode.episodeName}" />
             </div>
             <div class="episodeNameContainer">
@@ -190,6 +190,7 @@ function swiperModal() {
   console.log("swiper");
   new Swiper(".swiper-container", {
     slidesPerView: "auto",
+    freeMode: true,
     spaceBetween: 10,
     // breakpoints: {
     //   320: {
