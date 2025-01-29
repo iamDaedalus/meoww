@@ -139,23 +139,26 @@
   padding: 2px 10px;
 }
 #modalOverview {
-  font-size: clamp(.9rem, 0.9rem + 0.274vw, 1.2rem);
+  font-size: clamp(0.9rem, 0.9rem + 0.274vw, 1.2rem);
   height: 100%;
   width: 100%;
   padding: 0px 10px;
   display: flex;
+  gap: 20px;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
 }
 .modalOverviewText {
+  padding: 10px 0;
   display: -webkit-box;
-  -webkit-line-clamp: 4; /* Limits to 4 lines */
+  -webkit-line-clamp: 5; /* Limits to 4 lines */
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: normal; /* Allows multiline ellipsis */
 }
+
 .modalTrailer {
   height: 100%;
   width: 100%;
@@ -185,6 +188,7 @@
   position: relative;
   aspect-ratio: 1 / 1;
   width: 20%;
+  min-width: 125px;
 }
 .castName {
   position: absolute;
@@ -193,7 +197,7 @@
   padding: 5px;
   border-radius: 5px;
   text-align: center;
-  font-size: clamp(0.6rem, 0.6rem + 0.6849vw, 1rem);
+  font-size: clamp(0.7rem, 0.7rem + 0.6849vw, 1rem);
   width: 100%;
   display: -webkit-box;
   -webkit-line-clamp: 2; /* Limits to 4 lines */
@@ -279,6 +283,9 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .modal {
+    background: linear-gradient(0deg, #0d0d0d 70%, rgb(255, 255, 255));
+  }
   .modalContent {
     height: 60%;
     min-width: 0;
@@ -313,6 +320,9 @@
     background: transparent;
   }
 
+  .modalOverviewText {
+    -webkit-line-clamp: 4; /* Limits to 4 lines */
+  }
   .seasonSlide {
     width: 150px;
   }
