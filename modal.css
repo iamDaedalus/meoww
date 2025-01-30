@@ -188,30 +188,34 @@
 }
 
 .castimageContainer {
-  position: relative;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1.5 / 1.2;
   width: 20%;
-  min-width: 80px;
+  min-width: 125px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.castName {
-  position: absolute;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.412);
-  padding: 1px 10px;
-  border-radius: 5px;
-  text-align: center;
-  font-size: clamp(0.7rem, 0.7rem + 0.6849vw, 1rem);
+
+.actorImageContainer,
+.actorNameContainer {
   width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
 }
-.castimage {
+
+.actorImageContainer img {
   height: 100%;
+  border-radius: 5px;
   width: 100%;
   object-fit: cover;
-  object-position: center;
-  border-radius: 10px;
+}
+.actorNameContainer p {
+  font-size: clamp(0.7rem, 0.7rem + 0.6849vw, 1.4rem);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .seasonDropdown {
