@@ -2,6 +2,7 @@ const modal = document.getElementById("modal");
 const closeModal = document.getElementById("closeModal");
 const modalPoster = document.getElementById("modalPoster");
 const modalTitle = document.getElementById("modalTitle");
+const modalVote = document.getElementById("modalVote");
 const modalYear = document.getElementById("modalYear");
 const modalRuntime = document.getElementById("modalRuntime");
 const modalGenre = document.getElementById("modalGenre");
@@ -17,6 +18,7 @@ async function modalFunction(data) {
   modalPoster.classList.add("lazy-load");
   modalPoster.style.border = "none";
   modalTitle.innerText = data.title;
+  modalVote.innerText =`${data.vote}`;
   modalYear.innerText = data.year;
   modalRuntime.innerText = data.run;
   modalGenre.innerText = data.genre;
@@ -192,25 +194,17 @@ function swiperModal() {
     slidesPerView: "auto",
     freeMode: true,
     spaceBetween: 10,
-    // breakpoints: {
-    //   320: {
-    //     slidesPerView: 2.7,
-    //     spaceBetween: 10,
-    //   },
-    //   428: {
-    //     slidesPerView: 3,
-    //     spaceBetween: 10,
-    //   },
-    //   768: {
-    //     // For tablets
-    //     slidesPerView: 5,
-    //     spaceBetween: 12,
-    //   },
-    //   1024: {
-    //     // For desktops
-    //     slidesPerView: 5.5,
-    //     spaceBetween: 15,
-    //   },
-    // },
+    breakpoints: {
+      320: {
+   
+        spaceBetween: 5,
+      },
+      428: {
+       
+        spaceBetween: 5,
+      },
+ 
+ 
+    },
   });
 }
