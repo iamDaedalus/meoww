@@ -18,7 +18,7 @@ async function modalFunction(data) {
   modalPoster.classList.add("lazy-load");
   modalPoster.style.border = "none";
   modalTitle.innerText = data.title;
-  modalVote.innerText =`${data.vote}`;
+  modalVote.innerText = `${data.vote}`;
   modalYear.innerText = data.year;
   modalRuntime.innerText = data.run;
   modalGenre.innerText = data.genre;
@@ -169,15 +169,16 @@ function actorFunction(data) {
     const castimageContainer = document.createElement("div");
     castimageContainer.className = "castimageContainer";
     castimageContainer.classList.add("swiper-slide");
-    const castimage = document.createElement("img");
-    castimage.className = "castimage";
-    castimage.classList.add("lazy-load");
-    castimage.dataset.src = meow.actorImage;
-    const castName = document.createElement("p");
-    castName.className = "castName";
-    castName.innerText = `${meow.actorName} as ${meow.actorChar}`;
-    castimageContainer.appendChild(castimage);
-    castimageContainer.appendChild(castName);
+
+    castimageContainer.innerHTML = `
+    <div class="actorImageContainer">
+    <img src="${meow.actorImage}" alt="actorName"/>
+    </div>
+    <div class="actorNameContainer">
+    <p class="actorName">${meow.actorName} as ${meow.actorChar}</p>
+    </div>
+    `;
+
 
     castWrapper.appendChild(castimageContainer);
   });
@@ -196,15 +197,11 @@ function swiperModal() {
     spaceBetween: 10,
     breakpoints: {
       320: {
-   
         spaceBetween: 5,
       },
       428: {
-       
         spaceBetween: 5,
       },
- 
- 
     },
   });
 }
