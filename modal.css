@@ -22,14 +22,22 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 10px 15px;
-  color: #ffffff;
+  gap: 3px;
+  padding: 10px 16px 15px 16px;
+  color: #e8e8e8;
+  background: rgba(0, 0, 0, 0.152);
+  border-radius: 8px;
   cursor: pointer;
+  transition: 0.2s ease;
   z-index: 9;
 }
 .arrow_back::after {
   content: "BACK";
-  font-size: 0.7rem;
+  font-size: 0.8rem;
+}
+.arrow_back:hover {
+  background: #e8e8e8;
+  color: #0d0d0d;
 }
 .modalWrapper {
   position: relative;
@@ -79,9 +87,11 @@
   transition: 0.2s ease-out;
 }
 .modalPlayEpisode {
-  font-size: 2rem;
+  font-size: 4rem;
+  border: 2px solid white;
 }
-.modalPlay:hover {
+.modalPlay:hover,
+.modalPlayEpisode:hover {
   transform: scale(1.1);
 }
 #modalTitle {
@@ -130,6 +140,7 @@
   border-radius: 8px;
   border: 2px solid #ffffff67;
   background: transparent;
+  cursor: pointer;
   transition: 0.2s ease;
 }
 .activeButton {
@@ -228,13 +239,18 @@
   box-shadow: 3px 3px 6px #000000, -3px -3px 6px #131313;
   font-size: clamp(0.7rem, 0.7rem + 0.6849vw, 1.2rem);
   background: transparent;
-  color: #e8e8e8;
+  color: rgba(245, 245, 245, 0.397);
   border-radius: 8px;
-
+  cursor: pointer;
+  border: 1px solid #e8e8e88f;
+  transition: 0.2s ease;
+}
+.seasonDropdown:focus {
+  color: whitesmoke;
   border: 2px solid #e8e8e8;
 }
 
-option{
+option {
   color: #0d0d0d;
 }
 
@@ -333,9 +349,8 @@ option{
     height: 80px;
   }
   .modalContentLower {
-  height: calc(100% - 80px);
-
-}
+    height: calc(100% - 80px);
+  }
 
   .modalButtons {
     gap: 5px;
@@ -365,6 +380,8 @@ option{
     font-size: clamp(1rem, 0.9726rem + 1.3699vw, 2rem);
     padding: 10px 12px;
     gap: 4px;
+    top: 5px;
+    right: 5px;
   }
   .arrow_back::after {
     content: "BACK";
@@ -376,5 +393,28 @@ option{
 
   .episodeNameContainer {
     width: 55%;
+  }
+
+  .modalPlay,
+  .modalPlayEpisode {
+    font-size: 4rem;
+    border: 2px solid white;
+  }
+  .modalPlayEpisode {
+    font-size: 3rem;
+    border: 1px solid white;
+  }
+
+  .actorImageContainer img {
+    border: 1px solid #e8e8e887;
+  }
+  .episodeImageContainer img {
+    border: 1px solid #e8e8e88a;
+  }
+  .activeButton {
+    border: 1px solid #e8e8e8 !important;
+  }
+  .seasonDropdown:focus {
+    border: 1px solid #e8e8e8;
   }
 }
