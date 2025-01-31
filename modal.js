@@ -152,6 +152,7 @@ function closeModalFunction() {
     document.body.style.overflow = "auto";
     modalPoster.src = "";
     modalTitle.innerText = "Title";
+    modalVote.innerText = "Vote"
     modalOverview.innerHTML = "";
     modalYear.innerText = "Year";
     modalRuntime.innerText = "Runtime";
@@ -172,10 +173,10 @@ function actorFunction(data) {
 
     castimageContainer.innerHTML = `
     <div class="actorImageContainer">
-    <img src="${meow.actorImage}" alt="actorName"/>
+    <img class="lazy-load" data-src="${meow.actorImage}" alt="actorName"/>
     </div>
     <div class="actorNameContainer">
-    <p class="actorName">${meow.actorName} as ${meow.actorChar}</p>
+    <p class="actorName">${meow.actorName}</p>
     </div>
     `;
 
