@@ -109,7 +109,7 @@
   height: 133px;
 }
 .modalContentLower {
-  height: 75%;
+  height: calc(100% - 133px);
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -128,12 +128,13 @@
   border: 0;
   color: rgba(245, 245, 245, 0.397);
   border-radius: 8px;
-  border: 2px solid #00000067;
-
+  border: 2px solid #ffffff67;
   background: transparent;
+  transition: 0.2s ease;
 }
 .activeButton {
   color: whitesmoke !important;
+  border: 2px solid #e8e8e8 !important;
 }
 .modalTrio {
   display: flex;
@@ -188,9 +189,9 @@
 }
 
 .castimageContainer {
-  aspect-ratio: 1.5 / 1.2;
-  width: 20%;
-  min-width: 125px;
+  aspect-ratio: 1 / 1.2;
+  width: 15%;
+  min-width: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -207,12 +208,14 @@
 
 .actorImageContainer img {
   height: 100%;
-  border-radius: 5px;
+  border-radius: 50%;
   width: 100%;
   object-fit: cover;
+  border: 2px solid #e8e8e887;
+  box-shadow: 3px 3px 6px #000000, -3px -3px 6px #131313;
 }
 .actorNameContainer p {
-  font-size: clamp(0.7rem, 0.7rem + 0.6849vw, 1.4rem);
+  font-size: clamp(0.7rem, 0.7rem + 0.6849vw, 1rem);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -227,7 +230,12 @@
   background: transparent;
   color: #e8e8e8;
   border-radius: 8px;
-  border: 2px solid #00000067;
+
+  border: 2px solid #e8e8e8;
+}
+
+option{
+  color: #0d0d0d;
 }
 
 .episodeContainer {
@@ -246,9 +254,9 @@
 .episodeSlide {
   width: 100%;
   display: flex;
-  height: 200px;
+  height: 195px;
   gap: 20px;
-  padding: 10px 0;
+  padding: 20px 0;
   background: #0d0d0d;
   cursor: pointer;
 }
@@ -266,6 +274,7 @@
   object-fit: cover;
   object-position: center;
   border-radius: 5px;
+  border: 2px solid #e8e8e88a;
 }
 .star {
   color: yellow;
@@ -323,6 +332,10 @@
   .modalContentUpper {
     height: 80px;
   }
+  .modalContentLower {
+  height: calc(100% - 80px);
+
+}
 
   .modalButtons {
     gap: 5px;
@@ -331,7 +344,7 @@
   .modalButtons button {
     padding: 7px;
     box-shadow: 3px 3px 6px #000000, -3px -3px 6px #131313;
-    border: 2px solid #e8e8e88f;
+    border: 1px solid #e8e8e88f;
     border-radius: 5px;
   }
 
